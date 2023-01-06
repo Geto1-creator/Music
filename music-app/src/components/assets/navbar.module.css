@@ -1,0 +1,115 @@
+.Container {
+  height: 100vh;
+  width: 15vw;
+  background-color: black;
+  position: fixed;
+  display: flex;
+  /* flex-direction: column; */
+  padding-left: 30px;
+  padding-top: 30px;
+  transition: 500ms;
+  animation: mymove 2s alternate;
+  z-index: 999;
+}
+.none {
+  display: none !important;
+}
+/* .logoImg {
+    width: 170px;
+    height: 50px;
+} */
+.logoCont {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo {
+  font-size: 40px;
+  color: orange;
+}
+
+.logoText {
+  font-size: 30px;
+  color: white;
+  font-family: "Mulish", sans-serif;
+}
+.textContainer {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.tInner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.texts {
+  font-size: 13px;
+  opacity: 70%;
+  font-family: "Mulish", sans-serif;
+  text-decoration: none;
+  color: white;
+}
+
+.icons {
+  font-size: 25px;
+  color: white;
+  opacity: 70%;
+}
+.bottomCont {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: absolute;
+  bottom: 100px;
+}
+.buttonLogIn {
+  width: 100px;
+  border-radius: 30px;
+  background-color: black;
+  border: 1px solid;
+  font-size: 15px;
+  font-weight: bold;
+}
+.buttonSignUp {
+  width: 100px;
+  font-weight: bold;
+  border-radius: 30px;
+  background-color: orange;
+  border: none;
+  font-size: 15px;
+}
+
+.buttonLogIn:hover {
+  background-color: white;
+  color: black;
+}
+.buttonSignUp:hover {
+  background-color: white;
+  color: black;
+}
+.line {
+  width: 95%;
+  color: white;
+}
+
+.playlistContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.playlistTitle {
+  color: white;
+  font-size: 13px;
+  opacity: 70%;
+  font-family: "Mulish", sans-serif;
+}
+@keyframes mymove {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
+}

@@ -1,0 +1,172 @@
+.Container {
+  width: 100%;
+  /* height: 100vh; */
+  /* display: grid; */
+  padding-left: 15%;
+  /* padding-right: 2%; */
+  transition: 500ms;
+  position: relative;
+  /* padding-top: 100px; */
+}
+
+.topCont {
+  width: 100%;
+  height: 40%;
+  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  padding-left: 30px;
+  padding-bottom: 30px;
+  /* background: linear-gradient(transparent, rgba(0, 0, 0, 1));
+  background-color: rgb(32, 87, 100); */
+  background-color: #00dbde;
+  background-image: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
+}
+.bgColor1 {
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.line {
+  width: 100%;
+  color: white;
+}
+.mainCont {
+  width: 95%;
+  padding-left: 40px;
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 10fr;
+}
+.marginRight {
+  margin-right: 25px;
+}
+.songContainer {
+  width: 100%;
+  /* margin-left: 25px; */
+  padding: 10px;
+  /* border: 1px solid black; */
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 20px;
+}
+.musicImg {
+  border-radius: 0px;
+  width: 40px;
+  height: 40px;
+}
+.id {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: start;
+  opacity: 70%;
+}
+.song {
+  display: flex;
+  flex-direction: column;
+}
+.songName {
+  font-family: "Mulish", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+/* img {
+  width: 50px;
+  height: 50px;
+} */
+.artist {
+  font-family: "Mulish", sans-serif;
+  font-size: 11px;
+  font-weight: 100;
+  opacity: 50%;
+}
+.duration {
+  position: absolute;
+  right: 40px;
+  font-family: "Mulish", sans-serif;
+  opacity: 60%;
+  font-size: 13px;
+}
+.duration2 {
+  position: absolute;
+  right: 10px;
+  font-family: "Mulish", sans-serif;
+  opacity: 60%;
+}
+.threeDot {
+  font-size: 20px;
+  color: white;
+  /* margin-left: 30px; */
+}
+.songContainer:hover {
+  background-color: rgba(34, 34, 34, 0.87);
+}
+.delete {
+  font-size: 30px;
+}
+.dropdown {
+  margin-top: 20px;
+  width: 0px;
+}
+.pImg {
+  width: 200px;
+  height: 200px;
+  border-radius: 0px;
+}
+.infoCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+}
+.playlistTitle {
+  font-size: 60px;
+  color: white;
+  font-family: "Mulish", sans-serif;
+}
+.playlistTexts {
+  font-size: 15px;
+  color: white;
+  font-family: "Mulish", sans-serif;
+}
+.backArrow {
+  position: absolute;
+  top: 15px;
+  font-size: 35px;
+  color: white;
+}
+
+.backArrow:hover {
+  cursor: pointer;
+  color: gray;
+}
+.listInfo {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+}
+/* .listInfo:nth-child(2) {
+  position: absolute;
+  top: 2px
+} */
+.listText {
+  font-size: 14px;
+  color: rgb(172, 172, 172);
+  font-family: "Mulish", sans-serif;
+}
+.txt {
+  margin-left: 20px;
+}
+
+.Player {
+  color: white;
+  background-color: black;
+}
+.dots {
+  font-size: 25px;
+  position: absolute;
+  right: 0px;
+}

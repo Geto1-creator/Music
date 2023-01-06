@@ -1,0 +1,30 @@
+.container {
+  position: fixed;
+  top: 15px;
+  right: 30px;
+  display: flex;
+  padding-bottom: 3px;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 1111;
+  background-color: #050505ee;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  background-color: #050505ee;
+  border: none;
+  gap: 10px;
+}
+.proImg {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+}
+.none {
+  display: none;
+}
+.texts {
+  font-family: "Mulish", sans-serif;
+  color: white;
+}

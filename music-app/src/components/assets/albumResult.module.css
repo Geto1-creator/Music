@@ -1,0 +1,27 @@
+.Container {
+  display: flex;
+}
+.card {
+  background-color: black;
+  position: relative;
+  color: white;
+
+  padding: 10px;
+  width: 220px;
+  height: 320px;
+  font-size: 13px;
+}
+.img {
+  width: 100%;
+  height: auto;
+}
+.title {
+  font-size: 15px;
+}
+.artist {
+  position: absolute;
+  bottom: 15px;
+}
+.card:hover {
+  opacity: 70%;
+}

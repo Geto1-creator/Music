@@ -1,0 +1,118 @@
+.Container {
+  width: 85%;
+  height: 90px;
+  background-color: rgb(0, 0, 0);
+  display: none;
+  position: fixed;
+  bottom: 0%;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+.flex {
+  display: flex;
+}
+.volume {
+  display: flex;
+}
+.volIcon {
+  font-size: 40px;
+  color: white;
+}
+input {
+  width: 120px;
+}
+.playIcon {
+  font-size: 40px;
+  color: white;
+}
+.albumCont {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.albumImg {
+  width: 60px;
+  height: 60px;
+
+}
+
+.songDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.songText {
+  font-size: 17px;
+  color: white;
+  font-family: "Mulish", sans-serif;
+}
+.artistText {
+  font-size: 12px;
+  color: white;
+  font-family: "Mulish", sans-serif;
+}
+.middleCont {
+  width: 40%;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 120px;
+}
+progress {
+  width: 100%;
+}
+/* .seekBar {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+  background: gray;
+  overflow: hidden;
+  cursor: pointer;
+}
+.seekBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1px;
+  height: 20px;
+  box-shadow: -400px 0 0 400px rgb(206, 206, 206);
+} */
+.navigation {
+  width: 100%;
+}
+.navigation_wrapper {
+  min-width: 100%;
+  background-color: rgba(119, 119, 119, 0.781);
+  height: 5px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.seek_bar {
+  width: 0;
+  height: 100%;
+  background-color: rgb(206, 206, 206);
+  border-radius: 30px;
+  transition: 300ms;
+}
+.duration {
+  display: flex;
+  justify-content: space-between;
+}
+.dText {
+  color: white;
+  font-family: "Mulish", sans-serif;
+}
+.playBackForward {
+  font-size: 30px;
+  color: white;
+}
+.gg {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}

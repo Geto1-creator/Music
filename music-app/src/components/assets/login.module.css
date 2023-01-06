@@ -1,0 +1,104 @@
+.Container {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.logoCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.logo {
+  font-size: 55px;
+  color: orange;
+}
+
+.logoText {
+  font-size: 45px;
+  color: black;
+  font-family: "Mulish", sans-serif;
+}
+.borderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+.section1 {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.inp {
+  width: 400px;
+  height: 45px;
+  background-color: rgb(232, 240, 254);
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 14px;
+  padding-left: 12px;
+}
+.section1Texts {
+  font-family: "Mulish", sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+}
+.section2Texts {
+  font-family: "Mulish", sans-serif;
+  font-size: 15px;
+}
+.section2 {
+  display: flex;
+  justify-content: space-between;
+}
+.checkCont {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.check {
+  width: 15px;
+}
+.botText {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+}
+.but {
+  background-color: orange;
+  border-radius: 500px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  /* font-family: "Mulish", sans-serif; */
+  font-weight: bold;
+  font-size: 14px;
+}
+.section3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.section3Text {
+  font-family: "Mulish", sans-serif;
+  font-family: 20px;
+  font-weight: bold;
+}
+.but2 {
+  width: 100%;
+  border: 1px solid gray;
+  background-color: white;
+  border-radius: 500px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "Mulish", sans-serif;
+  color: GRAY;
+  font-size: 14px;
+  font-weight: 900;
+}

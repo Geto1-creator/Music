@@ -1,0 +1,34 @@
+/* .App {
+  text-align: center;
+  overflow-x: hidden;
+} */
+
+.rhap_main{
+  border: none;
+}
+.rhap_container{
+  background-color: rgb(26, 26, 26);
+  width: 50%;
+  border: none;
+  outline: none;
+  stroke: none;
+  box-shadow: none;
+}
+
+.rhap_button-clear{
+  color: white;
+}
+.rhap_current-time {
+color: white;
+}
+.rhap_time {
+  color: white
+}
+.dropdown-toggle {
+  background-color:transparent;
+  border: none
+}
+.dropdown-toggle:hover {
+  background-color:transparent;
+  border: none
+}
