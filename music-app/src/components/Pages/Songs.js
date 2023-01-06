@@ -9,29 +9,38 @@ import { MainContext } from "../contexts/MainProvider";
 // import 'react-dropdown/style.css';
 import { PlayerSecond } from "../PlayerSecond";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { Dropdown } from "react-bootstrap";
+import { Dropdown, Spinner } from "react-bootstrap";
 import { FindPlaylist } from "../FindPlaylist";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
 export const Songs = (props) => {
-  const { accessToken, playlistSong } = useContext(MainContext);
+  const { accessToken, playlistSong, albums, setAlbums } =
+    useContext(MainContext);
   const [songs, setSongs] = useState([]);
   const [selectedSong, setSelectedSong] = useState(null);
   const [dur, setDur] = useState();
   const [p, setP] = useState(false);
   const [song_data, setSong_data] = useState();
   const [length, setLength] = useState();
+  const [album, setAlbum] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [index, setIndex] = useState();
   const { id } = useParams("");
   const Navigate = useNavigate();
-  const [songId, setSongId] = useState()
+  const [songId, setSongId] = useState();
+
+
+
 
   const audioElem = useRef();
 
   useEffect(() => {
-
     generateSongs();
 
+    const data = window.localStorage.getItem("APP_ALBUM");
+    const parsedData = JSON.parse(data);
+    // console.log(userInfoData)
+    if (data !== null) setAlbum(parsedData);
   }, []);
   // useEffect(() => {
   //   if (selectedSong != null) {
@@ -59,6 +68,7 @@ export const Songs = (props) => {
       .then((response) => response.json())
       .then((data) => {
         console.log("song: ", data.items);
+
         setSongs(data.items);
       })
       .catch((err) => {
@@ -66,6 +76,7 @@ export const Songs = (props) => {
       });
   }
 
+  console.log("albums", albums);
   const onPlaying = () => {
     const duration = audioElem.current.duration;
     const ct = audioElem.current.currentTime;
@@ -75,7 +86,7 @@ export const Songs = (props) => {
   };
   console.log(song_data);
   const ms = 54000000;
-  console.log(new Date(ms).toISOString().slice(11, 19)); // 👉️ 15:00:00
+
   function padTo2Digits(num) {
     return num.toString().padStart(2, "0");
   }
@@ -92,12 +103,29 @@ export const Songs = (props) => {
   return (
     <div className={styles.Container}>
       <div className={`${styles.topCont} ${styles.bgColor1}`}>
-        <span>hello</span>
+        <MdOutlineArrowBackIosNew
+          onClick={() => Navigate("/search")}
+          className={styles.backArrow}
+        />
+        <div style={{ display: "flex" }}>
+          <img className={styles.pImg} src={album && album.images[0].url}></img>
+          <div className={styles.infoCont}>
+            <span className={styles.playlistTexts}>Album</span>
+            <span className={styles.playlistTitle}>{album && album.name}</span>
+            <div>
+              <span className={styles.playlistTexts}>
+                {!album && <Spinner />}
+                {album && album.artists[0].name}, {songs.length}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       {/* <AiFillDelete onClick={Delete} className={styles.delete} /> */}
       <div className={styles.mainCont}>
         {songs &&
           songs.map((song, index) => {
+          
             return (
               <div
                 className={styles.songContainer}
@@ -111,8 +139,10 @@ export const Songs = (props) => {
                   // audioElem.current.play()
                 }}
               >
-                {/* <img src={song.image} /> */}
+
                 <span className={styles.id}>{index + 1}</span>
+                <img className={styles.musicImg} src={album && album.images[0].url} />
+
                 <div className={styles.song}>
                   <span className={styles.songName}>{song.name}</span>
                   <span className={styles.artist}>{song.artists[0].name}</span>
@@ -122,30 +152,27 @@ export const Songs = (props) => {
                     {convertMsToTime(song.duration_ms)}
                   </span>
 
-
                   <Dropdown className={styles.dots}>
                     <Dropdown.Toggle id="dropdown-basic">
                       {/* <BsThreeDotsVertical  /> */}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item onClick={() => {
-                        setSongId(song)
-                      }}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          setSongId(song);
+                        }}
+                      >
                         Add To Playlist
                         <Dropdown />
                       </Dropdown.Item>
-                      <Dropdown.Item >
-                        Save To Liked Songs
-                      </Dropdown.Item>
+                      <Dropdown.Item>Save To Liked Songs</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-
                 </div>
               </div>
             );
           })}
-
       </div>
 
       <>

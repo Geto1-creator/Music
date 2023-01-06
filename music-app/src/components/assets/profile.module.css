@@ -1,4 +1,4 @@
-.container {
+/* .container {
   position: fixed;
   top: 15px;
   right: 30px;
@@ -8,8 +8,11 @@
   cursor: pointer;
   z-index: 1111;
   background-color: #050505ee;
-}
+} */
 .profile {
+  position: fixed;
+  top: 15px;
+  right: 30px;
   display: flex;
   align-items: center;
   background-color: #050505ee;

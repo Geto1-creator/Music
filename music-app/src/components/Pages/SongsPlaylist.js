@@ -30,10 +30,6 @@ export const SongsPlaylist = (props) => {
   const Navigate = useNavigate();
 
   useEffect(() => {
-    // const data = window.localStorage.getItem("APP_PLAYLIST");
-    // console.log(data);
-
-    // if (data !== null) setPlaylistName(JSON.parse(data));
     axios
       .get(`http://localhost:8000/playlist/${id}`, {})
       .then((res) => {
@@ -71,17 +67,17 @@ export const SongsPlaylist = (props) => {
       });
   };
 
-  const AddToFavourite = () => {
-    axios
-      .delete(`http://localhost:8000/song/${id}`, {})
-      .then((res) => {
-        console.log("deleted");
-        window.location.reload(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // const AddToFavourite = () => {
+  //   axios
+  //     .delete(`http://localhost:8000/song/${id}`, {})
+  //     .then((res) => {
+  //       console.log("deleted");
+  //       window.location.reload(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
   console.log(songs);
 
@@ -126,7 +122,7 @@ export const SongsPlaylist = (props) => {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <AiOutlineHeart />
+
         </div>
 
         {/* <AiFillDelete onClick={Delete} className={styles.delete} /> */}

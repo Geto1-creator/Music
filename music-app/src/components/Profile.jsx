@@ -2,16 +2,17 @@ import { Dropdown } from "react-bootstrap";
 import styles from "./assets/profile.module.css";
 import { useAuth } from "./contexts/AuthContext";
 import { getAuth, signOut } from "firebase/auth";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useContext } from "react";
 import { MainContext } from "./contexts/MainProvider";
 import { useEffect } from "react";
 
 export const Profile = () => {
   const { currentUser } = useAuth();
-  const { setDisplayProfile, displayProfile, setPlaylists, setUserInfo } =
+  const { setDisplayProfile, displayProfile, setPlaylists, setUserInfo, userInfo } =
     useContext(MainContext);
   const auth = getAuth();
+  const navigate = useNavigate()
   let location = useLocation();
   useEffect(() => {
     if (location.pathname == "/login" || location.pathname == "/search") {
@@ -32,6 +33,8 @@ export const Profile = () => {
         console.log(error);
       });
   };
+
+
   // console.log(displayProfile);
   return (
     <Dropdown style={{ borderRadius: "30px" }}>
@@ -51,9 +54,9 @@ export const Profile = () => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item >Profile</Dropdown.Item>
+          <Dropdown.Item onClick={() => navigate(`/profile/${userInfo._id}`)}>Profile</Dropdown.Item>
           <Dropdown.Item >Settings</Dropdown.Item>
-          <Dropdown.Item onClick={SignOut} href="#/action-3">
+          <Dropdown.Item onClick={SignOut} >
             Log Out
           </Dropdown.Item>
         </Dropdown.Menu>
