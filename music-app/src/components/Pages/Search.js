@@ -27,8 +27,9 @@ export const Search = () => {
     setPlayingTrack,
     isPlaying,
     search,
-    artists
+    artists,
   } = useContext(MainContext);
+
   function chooseTrack(album) {
     setPlayingTrack(album);
     setSearchInput("");
@@ -40,7 +41,7 @@ export const Search = () => {
     <>
       <div className={styles.Container}>
         <Container>
-          <InputGroup className="mb-3" size="lg3">
+          <InputGroup className={styles.searchInput} size="lg3">
             <FormControl
               placeholder="Search For Artist"
               type="input"
@@ -63,21 +64,30 @@ export const Search = () => {
             {artists.map((artist, index) => {
               if (index == 0 && artist != null) {
                 return (
-                  <Artist img={artist.images[0].url}
+                  <Artist
+                    img={artist.images[0].url}
                     name={artist.name}
                     followers={artist.followers.total}
                     genres={artist.genres[0]}
                     popularity={artist.popularity}
                   />
-                )
+                );
               }
-
             })}
           </div>
           <div className={styles.albumContainer}>
             {albums.map((album, index) => {
               return (
-                <Link className={styles.album} to={`/albums/${album.id}`}>
+                <Link
+                  className={styles.album}
+                  to={`/albums/${album.id}`}
+                  onClick={() => {
+                    window.localStorage.setItem(
+                      "APP_ALBUM",
+                      JSON.stringify(album)
+                    );
+                  }}
+                >
                   <AlbumSearchResult
                     index={index}
                     album={album}
@@ -89,7 +99,6 @@ export const Search = () => {
           </div>
         </Container>
       </div>
-
 
       {/* <div>
         <audio src="spotify:album:7e8ZKs0jaBUKF0jHjbs0bD" />

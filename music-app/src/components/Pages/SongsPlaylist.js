@@ -30,10 +30,6 @@ export const SongsPlaylist = (props) => {
   const Navigate = useNavigate();
 
   useEffect(() => {
-    // const data = window.localStorage.getItem("APP_PLAYLIST");
-    // console.log(data);
-
-    // if (data !== null) setPlaylistName(JSON.parse(data));
     axios
       .get(`https://music-backend-zz59.onrender.com/playlist/${id}`, {})
       .then((res) => {
@@ -71,6 +67,7 @@ export const SongsPlaylist = (props) => {
       });
   };
 
+<<<<<<< HEAD
   const AddToFavourite = () => {
     axios
       .delete(`https://music-backend-zz59.onrender.com/song/${id}`, {})
@@ -82,6 +79,19 @@ export const SongsPlaylist = (props) => {
         console.log(error);
       });
   }
+=======
+  // const AddToFavourite = () => {
+  //   axios
+  //     .delete(`http://localhost:8000/song/${id}`, {})
+  //     .then((res) => {
+  //       console.log("deleted");
+  //       window.location.reload(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
+>>>>>>> d8ccf8c6f49c3b77e03c8774be43c254ce0e9b61
 
   console.log(songs);
 
@@ -126,7 +136,7 @@ export const SongsPlaylist = (props) => {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <AiOutlineHeart />
+
         </div>
 
         {/* <AiFillDelete onClick={Delete} className={styles.delete} /> */}

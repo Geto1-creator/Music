@@ -74,7 +74,7 @@ export const FindPlaylist = (props) => {
         <div className={styles.innerCont}>
           {list &&
             list.map((playlist, index) => {
-              console.log(playlist);
+
               return (
                 <div style={{ display: "flex", gap: "5px" }}>
                   <span style={{ opacity: "50%" }}>{index + 1}.</span>

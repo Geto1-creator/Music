@@ -1,0 +1,83 @@
+.Container {
+  width: 100vw;
+  height: 100vh;
+  /* padding-top: 4%; */
+  /* padding-right: 5%; */
+  padding-left: 15%;
+  overflow-x: hidden;
+  /* background: linear-gradient(transparent, rgba(0, 0, 0, 1));
+    background-color: rgb(32, 87, 100); */
+  transition: 500ms;
+  background: rgb(20, 20, 20);
+}
+
+.topCont {
+  width: 100%;
+  height: 40%;
+  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  padding-left: 30px;
+  padding-bottom: 30px;
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+.infoCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+  padding-top: 30px;
+}
+.proImg {
+  border-radius: 500px;
+  width: 220px;
+  height: 220px;
+}
+.topText {
+  color: rgb(222, 222, 222);
+  font-size: 20px;
+
+}
+.proName {
+  color: white;
+  font-size: 40px;
+  font-family: "Mulish", sans-serif;
+
+  background: linear-gradient(0deg, slateblue, slateblue) no-repeat right bottom / 0 var(--bg-h);
+  transition: background-size 350ms;
+  --bg-h: 100%;
+}
+
+.marginTop {
+  margin-top: 40px;
+}
+.backArrow {
+  position: absolute;
+  top: 20px;
+  font-size: 35px;
+  color: white;
+}
+
+.contentContainer {
+    display: flex;
+    padding: 30px;
+}
+.title {
+    color: white;
+    font-family: "Mulish", sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.backArrow:hover {
+    cursor: pointer;
+    color: gray;
+  }
+
+
+  .proName:where(:hover, :focus-visible) {
+    background-size: 100% var(--bg-h);
+    background-position-x: left;
+  }

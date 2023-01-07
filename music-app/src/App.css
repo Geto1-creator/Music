@@ -26,9 +26,11 @@ color: white;
 }
 .dropdown-toggle {
   background-color:transparent;
-  border: none
+  border-radius: 20px;
+
 }
 .dropdown-toggle:hover {
-  background-color:transparent;
+  border-radius: 30px;
+  /* background-color:black; */
   border: none
 }
