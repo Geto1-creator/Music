@@ -12,7 +12,7 @@ export const CreateSong = () => {
     useContext(MainContext);
   let songName = useRef();
   const [pName, setPName] = useState();
-  const baseUrl = "http://localhost:8000";
+  const baseUrl = "https://music-backend-zz59.onrender.com";
   const [songId, setSongId] = useState();
   const { id } = useParams("");
   const createSong = () => {

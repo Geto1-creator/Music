@@ -13,7 +13,7 @@ export const FindPlaylist = (props) => {
   const [pName, setPName] = useState();
   const [putId, setPutId] = useState();
   const [list, setList] = useState();
-  const baseUrl = "http://localhost:8000";
+  const baseUrl = "https://music-backend-zz59.onrender.com";
 
   const { id } = useParams("");
   console.log(putId);

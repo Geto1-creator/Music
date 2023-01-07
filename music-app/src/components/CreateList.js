@@ -16,7 +16,7 @@ export const CreateList = () => {
   const [des, setDes] = useState("");
   const [added, setAdded] = useState(false)
   // console.log(create);
-  const baseUrl = "http://localhost:8000";
+  const baseUrl = "https://music-backend-zz59.onrender.com";
 
   // console.log(userId)
   const createPlaylist = () => {
@@ -32,7 +32,7 @@ export const CreateList = () => {
           playlistName.current.value = ""
           setCreate(false);
           axios
-            .put(`http://localhost:8000/user/` + userInfo._id, {
+            .put(`https://music-backend-zz59.onrender.com/` + userInfo._id, {
               id: res.data._id
             })
             .then((res) => {

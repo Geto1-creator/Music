@@ -95,7 +95,7 @@ export const MainProvider = ({ children }) => {
     // console.log(userInfo);
     if (userInfo._id)
       axios
-        .get("http://localhost:8000/user/" + userInfo._id)
+        .get("https://music-backend-zz59.onrender.com/" + userInfo._id)
         .then((res) => {
           console.log(res.data);
           setPlaylists(res.data.playlists);

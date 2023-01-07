@@ -23,14 +23,12 @@ export const LogIn = () => {
   const { currentUser, setIsLogIn, userId, setUserId } = useAuth();
   const [error, setError] = useState("");
 
-  const baseUrl = "http://localhost:8000";
-
   const onSubmit = (e) => {
     e.preventDefault();
     const auth = getAuth();
 
     axios
-      .post(`http://localhost:8000/login`, {
+      .post(`https://music-backend-zz59.onrender.com/users`, {
         email: emailI,
         password: passwordI,
       })
@@ -49,7 +47,7 @@ export const LogIn = () => {
           });
 
         axios
-          .get(`http://localhost:8000/user/` + res.data._id)
+          .get(`https://music-backend-zz59.onrender.com/user` + res.data._id)
           .then((res) => {
             console.log(res.data);
             // setPlaylists(res.data.playlists);
@@ -83,8 +81,7 @@ export const LogIn = () => {
           <input
             onChange={(e) => setEmailI(e.target.value)}
             value={emailI}
-            className={styles.inp}
-          ></input>
+            className={styles.inp}></input>
         </div>
         <div className={styles.section1}>
           <span className={styles.section1Texts}>Password</span>
@@ -92,8 +89,7 @@ export const LogIn = () => {
             onChange={(e) => setPasswordI(e.target.value)}
             value={passwordI}
             className={styles.inp}
-            type="password"
-          ></input>
+            type="password"></input>
         </div>
         <span className={styles.section2Texts}>Forget your password? </span>
         <div className={styles.section2}>

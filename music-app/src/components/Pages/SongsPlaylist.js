@@ -35,7 +35,7 @@ export const SongsPlaylist = (props) => {
 
     // if (data !== null) setPlaylistName(JSON.parse(data));
     axios
-      .get(`http://localhost:8000/playlist/${id}`, {})
+      .get(`https://music-backend-zz59.onrender.com/playlist/${id}`, {})
       .then((res) => {
         console.log(res.data);
 
@@ -50,7 +50,7 @@ export const SongsPlaylist = (props) => {
   // console.log(id);
   const Delete = () => {
     axios
-      .delete(`http://localhost:8000/playlist/${id}`,)
+      .delete(`https://music-backend-zz59.onrender.com/playlist/${id}`,)
       .then((res) => {
         console.log("deleted");
         Navigate("/");
@@ -61,7 +61,7 @@ export const SongsPlaylist = (props) => {
   };
   const RemoveSong = (id) => {
     axios
-      .delete(`http://localhost:8000/song/${id}`, {})
+      .delete(`https://music-backend-zz59.onrender.com/song/${id}`, {})
       .then((res) => {
         console.log("deleted");
         window.location.reload(false);
@@ -73,7 +73,7 @@ export const SongsPlaylist = (props) => {
 
   const AddToFavourite = () => {
     axios
-      .delete(`http://localhost:8000/song/${id}`, {})
+      .delete(`https://music-backend-zz59.onrender.com/song/${id}`, {})
       .then((res) => {
         console.log("deleted");
         window.location.reload(false);
