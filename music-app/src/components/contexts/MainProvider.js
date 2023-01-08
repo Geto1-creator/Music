@@ -18,6 +18,7 @@ export const MainProvider = ({ children }) => {
   const [artists, setArtists] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playlists, setPlaylists] = useState([]);
+  const [songs, setSongs] = useState([]);
   const [playlistName, setPlaylistName] = useState();
   const [playlistSong, setPlaylistSong] = useState(false);
   const [userInfo, setUserInfo] = useState([]);
@@ -54,7 +55,9 @@ export const MainProvider = ({ children }) => {
     setUserInfo,
     songCreate, setSongCreate,
     putCreate,
-    setPutCreate
+    setPutCreate,
+    songs,
+    setSongs
 
   };
 
@@ -90,12 +93,15 @@ export const MainProvider = ({ children }) => {
     if (user !== null) setUserInfo(parsedUser);
   }, []);
 
-  useEffect(() => {
 
-    // console.log(userInfo);
-    if (userInfo._id)
+
+  useEffect(() => {
+    console.log(userInfo)
+
+
+    if (userInfo)
       axios
-        .get("https://music-backend-zz59.onrender.com/" + userInfo._id)
+        .get("https://music-backend-zz59.onrender.com/user/" + userInfo._id)
         .then((res) => {
           console.log(res.data);
           setPlaylists(res.data.playlists);

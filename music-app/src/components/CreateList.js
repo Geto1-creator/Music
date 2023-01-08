@@ -30,14 +30,21 @@ export const CreateList = () => {
         })
         .then((res) => {
           playlistName.current.value = ""
-          setCreate(false);
           axios
-            .put(`https://music-backend-zz59.onrender.com/` + userInfo._id, {
+            .put(`https://music-backend-zz59.onrender.com/user/` + userInfo._id, {
               id: res.data._id
             })
             .then((res) => {
-              console.log(res.data);
-              window.location.reload(false);
+              axios
+                .get(`https://music-backend-zz59.onrender.com/user/` + userInfo._id)
+                .then((res) => {
+                  setCreate(false);
+                  console.log(res.data);
+                  setPlaylists(res.data.playlists)
+                })
+                .catch((error) => {
+                  console.log(error)
+                });
             })
             .catch((error) => {
               console.log(error)

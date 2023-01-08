@@ -7,16 +7,16 @@ import { Player } from "../Player";
 import { MainContext } from "../contexts/MainProvider";
 import { useAuth } from "../contexts/AuthContext";
 import { BsThreeDots, BsThreeDotsVertical } from "react-icons/bs";
-import { Dropdown, Spinner } from "react-bootstrap";
+import { Dropdown, Nav, Spinner } from "react-bootstrap";
 import { CreateSong } from "../CreateSong";
 import { BiArrowBack } from "react-icons/bi";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
 export const SongsPlaylist = (props) => {
-  const { accessToken, playlistName, setSongCreate, songCreate, setPlaylistName, userInfo } =
+  const { accessToken, songs, setSongs, playlistName, setSongCreate, songCreate, setPlaylistName, userInfo, playlists, setPlaylists } =
     useContext(MainContext);
   const { currentUser } = useAuth();
-  const [songs, setSongs] = useState();
+
   const [playlistData, setPlaylistData] = useState(null)
   const [selectedSong, setSelectedSong] = useState(null);
   const [dur, setDur] = useState();
@@ -49,37 +49,44 @@ export const SongsPlaylist = (props) => {
       .delete(`https://music-backend-zz59.onrender.com/playlist/${id}`,)
       .then((res) => {
         console.log("deleted");
-        Navigate("/");
+        axios
+          .get(`https://music-backend-zz59.onrender.com/user/` + userInfo._id)
+          .then((res) => {
+            console.log(res.data);
+            setPlaylists(res.data.playlists)
+            Navigate('/')
+          })
+          .catch((error) => {
+            console.log(error)
+          });
+
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  const RemoveSong = (id) => {
+  const RemoveSong = (songId) => {
     axios
-      .delete(`https://music-backend-zz59.onrender.com/song/${id}`, {})
+      .delete(`https://music-backend-zz59.onrender.com/song/${songId}`)
       .then((res) => {
         console.log("deleted");
-        window.location.reload(false);
+        axios
+          .get('https://music-backend-zz59.onrender.com/playlist/' + id)
+          .then((res) => {
+            console.log(res.data);
+            setSongs(res.data.songs)
+          })
+          .catch((error) => {
+            console.log(error)
+          });
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-<<<<<<< HEAD
-  const AddToFavourite = () => {
-    axios
-      .delete(`https://music-backend-zz59.onrender.com/song/${id}`, {})
-      .then((res) => {
-        console.log("deleted");
-        window.location.reload(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-=======
+
+
   // const AddToFavourite = () => {
   //   axios
   //     .delete(`http://localhost:8000/song/${id}`, {})
@@ -91,7 +98,6 @@ export const SongsPlaylist = (props) => {
   //       console.log(error);
   //     });
   // }
->>>>>>> d8ccf8c6f49c3b77e03c8774be43c254ce0e9b61
 
   console.log(songs);
 
@@ -134,6 +140,7 @@ export const SongsPlaylist = (props) => {
               <Dropdown.Item onClick={Delete} >
                 Delete
               </Dropdown.Item>
+
             </Dropdown.Menu>
           </Dropdown>
 
@@ -154,7 +161,7 @@ export const SongsPlaylist = (props) => {
           <hr className={styles.line}></hr>
           {songs &&
             songs.map((song, index) => {
-              console.log(song);
+
               return (
                 <div
                   key={song + index}

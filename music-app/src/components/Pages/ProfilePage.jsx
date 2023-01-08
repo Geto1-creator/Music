@@ -8,7 +8,6 @@ export const ProfilePage = () => {
   const { userInfo } = useContext(MainContext);
   const navigate = useNavigate();
 
-
   console.log(userInfo);
   return (
     <div className={styles.Container}>
@@ -30,7 +29,9 @@ export const ProfilePage = () => {
             <span className={`${styles.topText} ${styles.marginTop}`}>
               {userInfo && userInfo.playlists.length} Public Playlists
             </span>
-            <span className={styles.topText}>Founded: {userInfo && userInfo.createdAt}</span>
+            <span className={styles.topText}>
+              Founded: {userInfo && userInfo.createdAt}
+            </span>
           </div>
         </div>
       </div>

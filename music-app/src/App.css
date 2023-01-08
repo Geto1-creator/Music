@@ -3,10 +3,10 @@
   overflow-x: hidden;
 } */
 
-.rhap_main{
+.rhap_main {
   border: none;
 }
-.rhap_container{
+.rhap_container {
   background-color: rgb(26, 26, 26);
   width: 50%;
   border: none;
@@ -15,22 +15,22 @@
   box-shadow: none;
 }
 
-.rhap_button-clear{
+.rhap_button-clear {
   color: white;
 }
 .rhap_current-time {
-color: white;
+  color: white;
 }
 .rhap_time {
-  color: white
+  color: white;
 }
 .dropdown-toggle {
-  background-color:transparent;
-  border-radius: 20px;
-
+  background-color: black;
+  /* border-radius: 20px; */
+  border: none;
 }
 .dropdown-toggle:hover {
-  border-radius: 30px;
+  /* border-radius: 30px; */
   /* background-color:black; */
-  border: none
+  border: none;
 }

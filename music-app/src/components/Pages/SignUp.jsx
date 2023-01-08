@@ -56,7 +56,7 @@ export const SignUp = () => {
         const user = userCredential.user;
 
         console.log(user);
-       
+
         axios
           .post(`http://localhost:8000/users`, {
             email: emailI,
@@ -64,7 +64,7 @@ export const SignUp = () => {
           })
           .then((res) => {
             console.log(res.data);
-             navigate("/login");
+            navigate("/login");
           })
           .catch((error) => {
             console.log(error);
@@ -75,7 +75,7 @@ export const SignUp = () => {
         const errorCode = error.errorCode;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
-        toast.error("Please enter valid email address or password")
+        toast.error("Please enter valid email address or password");
       });
   };
   // console.log(currentUser);
@@ -84,14 +84,12 @@ export const SignUp = () => {
     <div className={styles.Container}>
       {" "}
       <ToastContainer />
- 
       <Link to="/">
         <div className={styles.logoCont}>
           <BsMusicNoteList className={styles.logo} />
           <span className={styles.logoText}>Invader</span>
         </div>
       </Link>
-
       {/* {currentUser && currentUser.password} */}
       <Form className={styles.borderContainer}>
         <div className={styles.topCont}>
@@ -104,8 +102,7 @@ export const SignUp = () => {
             value={emailI}
             onChange={(e) => setEmailI(e.target.value)}
             required
-            className={styles.inp}
-          ></input>
+            className={styles.inp}></input>
         </div>
         <div className={styles.section1}>
           <span className={styles.section1Texts}>Password</span>
@@ -115,8 +112,7 @@ export const SignUp = () => {
             required
             onChange={(e) => setPasswordI(e.target.value)}
             value={passwordI}
-            className={styles.inp}
-          ></input>
+            className={styles.inp}></input>
         </div>
 
         <div className={styles.section2}>

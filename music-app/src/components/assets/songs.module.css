@@ -170,3 +170,8 @@
   position: absolute;
   right: 0px;
 }
+.dropdown-toggle {
+  background-color: transparent;
+  /* border-radius: 20px; */
+  border: none;
+}

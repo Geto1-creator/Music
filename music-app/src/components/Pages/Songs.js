@@ -125,7 +125,7 @@ export const Songs = (props) => {
       <div className={styles.mainCont}>
         {songs &&
           songs.map((song, index) => {
-          
+
             return (
               <div
                 className={styles.songContainer}

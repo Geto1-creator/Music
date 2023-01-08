@@ -8,7 +8,7 @@ import { useParams } from "react-router";
 import { ImCross } from "react-icons/im";
 
 export const CreateSong = () => {
-  const { songCreate, setSongCreate, playlists, setPlaylists } =
+  const { songCreate, setSongCreate, playlists, setPlaylists, setSongs, songs } =
     useContext(MainContext);
   let songName = useRef();
   const [pName, setPName] = useState();
@@ -28,7 +28,6 @@ export const CreateSong = () => {
         })
         .then((res) => {
           songName.current.value = ""
-
           console.log(res.data);
           axios
             .put(baseUrl + "/playlist/" + id, {
@@ -36,8 +35,16 @@ export const CreateSong = () => {
             })
             .then((res) => {
               setSongCreate(false);
-              window.location.reload(false);
-              console.log(res.data);
+              axios
+                .get(baseUrl + '/playlist/' + id)
+                .then((res) => {
+                  console.log(res.data);
+                  setSongs(res.data.songs)
+                })
+                .catch((error) => {
+                  console.log(error)
+                });
+
             })
             .catch((error) => {
               console.log(error);

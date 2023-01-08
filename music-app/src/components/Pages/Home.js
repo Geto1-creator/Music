@@ -51,7 +51,7 @@ export const Home = () => {
   //   getPlaylistData();
   // }, [accessToken]);
 
-  // console.log(userId);
+  console.log(playlists);
 
   return (
     <>
