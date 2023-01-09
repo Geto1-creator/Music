@@ -18,6 +18,7 @@
   background-color: #050505ee;
   border: none;
   gap: 10px;
+  z-index: 111;
 }
 .proImg {
   width: 30px;

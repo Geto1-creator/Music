@@ -94,21 +94,21 @@ export const MainProvider = ({ children }) => {
   }, []);
 
 
-
   useEffect(() => {
     console.log(userInfo)
+    if (userInfo) {
+      if (userInfo._id)
+        axios
+          .get("https://music-backend-zz59.onrender.com/user/" + userInfo._id)
+          .then((res) => {
+            console.log(res.data);
+            setPlaylists(res.data.playlists);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    }
 
-
-    if (userInfo)
-      axios
-        .get("https://music-backend-zz59.onrender.com/user/" + userInfo._id)
-        .then((res) => {
-          console.log(res.data);
-          setPlaylists(res.data.playlists);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
   }, [userInfo]);
 
 

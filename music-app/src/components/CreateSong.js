@@ -27,13 +27,14 @@ export const CreateSong = () => {
           name: name,
         })
         .then((res) => {
-          songName.current.value = ""
+
           console.log(res.data);
           axios
             .put(baseUrl + "/playlist/" + id, {
               id: res.data._id,
             })
             .then((res) => {
+              songName.current.value = ""
               setSongCreate(false);
               axios
                 .get(baseUrl + '/playlist/' + id)

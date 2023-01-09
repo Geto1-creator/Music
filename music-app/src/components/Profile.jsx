@@ -9,10 +9,15 @@ import { useEffect } from "react";
 
 export const Profile = () => {
   const { currentUser } = useAuth();
-  const { setDisplayProfile, displayProfile, setPlaylists, setUserInfo, userInfo } =
-    useContext(MainContext);
+  const {
+    setDisplayProfile,
+    displayProfile,
+    setPlaylists,
+    setUserInfo,
+    userInfo,
+  } = useContext(MainContext);
   const auth = getAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   let location = useLocation();
   useEffect(() => {
     if (location.pathname == "/login" || location.pathname == "/search") {
@@ -26,6 +31,7 @@ export const Profile = () => {
     signOut(auth)
       .then(() => {
         setUserInfo(null);
+        localStorage.clear();
         console.log("sign out");
       })
       .catch((error) => {
@@ -33,7 +39,6 @@ export const Profile = () => {
         console.log(error);
       });
   };
-
 
   // console.log(displayProfile);
   return (
@@ -54,11 +59,14 @@ export const Profile = () => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item onClick={() => navigate(`/profile/${userInfo._id}`)}>Profile</Dropdown.Item>
-          <Dropdown.Item >Settings</Dropdown.Item>
-          <Dropdown.Item onClick={SignOut} >
-            Log Out
+          <Dropdown.Item
+            onClick={() => {
+              if (userInfo) navigate(`/profile/${userInfo._id}`);
+            }}>
+            Profile
           </Dropdown.Item>
+          <Dropdown.Item>Settings</Dropdown.Item>
+          <Dropdown.Item onClick={SignOut}>Log Out</Dropdown.Item>
         </Dropdown.Menu>
       </div>
     </Dropdown>

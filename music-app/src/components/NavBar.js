@@ -59,12 +59,12 @@ export const NavBar = () => {
           </div>
           <div className={styles.tInner}>
             <BiLibrary className={styles.icons} />
-            <Link className={styles.texts}>Library</Link>
+            <Link to="/library" className={styles.texts}>Library</Link>
           </div>
           <div className={styles.tInner}>
             <BsSearch className={styles.icons} />
             <Link to="/search" className={styles.texts}>
-              Search
+              Explore
             </Link>
           </div>
         </div>

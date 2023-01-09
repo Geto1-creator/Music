@@ -39,7 +39,6 @@ export const LogIn = () => {
           .then((userCredential) => {
             const user = userCredential.user;
             navigate("/");
-            window.location.reload(false);
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -47,10 +46,9 @@ export const LogIn = () => {
           });
 
         axios
-          .get(`https://music-backend-zz59.onrender.com/user` + res.data._id)
+          .get(`https://music-backend-zz59.onrender.com/user/` + res.data._id)
           .then((res) => {
             console.log(res.data);
-            // setPlaylists(res.data.playlists);
             window.localStorage.setItem("APP_USER", JSON.stringify(res.data));
           })
           .catch((error) => {

@@ -5,7 +5,7 @@ import styles from "../assets/profilepage.module.css";
 import { MainContext } from "../contexts/MainProvider";
 
 export const ProfilePage = () => {
-  const { userInfo } = useContext(MainContext);
+  const { userInfo, playlists } = useContext(MainContext);
   const navigate = useNavigate();
 
   console.log(userInfo);
@@ -27,7 +27,7 @@ export const ProfilePage = () => {
             <span className={styles.topText}>Profile</span>
             <span className={styles.proName}>{userInfo && userInfo.email}</span>
             <span className={`${styles.topText} ${styles.marginTop}`}>
-              {userInfo && userInfo.playlists.length} Public Playlists
+              {playlists && playlists.length} Public Playlists
             </span>
             <span className={styles.topText}>
               Founded: {userInfo && userInfo.createdAt}

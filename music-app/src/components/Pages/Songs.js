@@ -115,7 +115,7 @@ export const Songs = (props) => {
             <div>
               <span className={styles.playlistTexts}>
                 {!album && <Spinner />}
-                {album && album.artists[0].name}, {songs.length}
+                {album && album.artists[0].name}, {songs.length} songs
               </span>
             </div>
           </div>

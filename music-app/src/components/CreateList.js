@@ -29,26 +29,30 @@ export const CreateList = () => {
           isPrivate: false,
         })
         .then((res) => {
-          playlistName.current.value = ""
-          axios
-            .put(`https://music-backend-zz59.onrender.com/user/` + userInfo._id, {
-              id: res.data._id
-            })
-            .then((res) => {
+          if (userInfo) {
+            if (userInfo._id)
               axios
-                .get(`https://music-backend-zz59.onrender.com/user/` + userInfo._id)
+                .put(`https://music-backend-zz59.onrender.com/user/` + userInfo._id, {
+                  id: res.data._id
+                })
                 .then((res) => {
-                  setCreate(false);
-                  console.log(res.data);
-                  setPlaylists(res.data.playlists)
+                  axios
+                    .get(`https://music-backend-zz59.onrender.com/user/` + userInfo._id)
+                    .then((res) => {
+                      playlistName.current.value = ""
+                      setCreate(false);
+                      console.log(res.data);
+                      setPlaylists(res.data.playlists)
+                    })
+                    .catch((error) => {
+                      console.log(error)
+                    });
                 })
                 .catch((error) => {
                   console.log(error)
                 });
-            })
-            .catch((error) => {
-              console.log(error)
-            });
+          }
+
 
         })
         .catch((error) => {

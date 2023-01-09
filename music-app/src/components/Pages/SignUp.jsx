@@ -20,7 +20,7 @@ export const SignUp = () => {
   const navigate = useNavigate();
   let nameRef = useRef();
   let passwordRef = useRef();
-  const baseUrl = "http://localhost:8001";
+  const baseUrl = "https://music-backend-zz59.onrender.com";
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -58,7 +58,7 @@ export const SignUp = () => {
         console.log(user);
 
         axios
-          .post(`http://localhost:8000/users`, {
+          .post(baseUrl + "/users", {
             email: emailI,
             password: passwordI,
           })

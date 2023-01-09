@@ -8,6 +8,7 @@ import {
   Profile,
   SongsPlaylist,
   ProfilePage,
+  Library,
 } from "./components";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
@@ -35,12 +36,13 @@ function App() {
               <Route path="/albums">
                 <Route path=":id" element={<Songs />}></Route>
               </Route>
-              <Route path="profile"> 
-              <Route path=":id" element={<ProfilePage />}></Route>
-            </Route>
+              <Route path="profile">
+                <Route path=":id" element={<ProfilePage />}></Route>
+              </Route>
               <Route path="/playlist">
                 <Route path=":id" element={<SongsPlaylist />}></Route>
               </Route>
+              <Route path="/library" element={<Library />}></Route>
               <Route path="/search" element={<Search />}></Route>
               <Route path="/login" element={<LogIn />}></Route>
               <Route path="/signup" element={<SignUp />}></Route>
