@@ -3,7 +3,6 @@ import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 
 export const PlayerSecond = (props) => {
-    console.log(props.songData)
   return (
     <div className={props.isPlaying ? `${styles.Container} ${styles.flex}`: styles.Container}>
       <div className={styles.albumCont}>

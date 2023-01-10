@@ -15,10 +15,10 @@ export const CreateList = () => {
   const [pName, setPName] = useState();
   const [des, setDes] = useState("");
   const [added, setAdded] = useState(false)
-  // console.log(create);
+
   const baseUrl = "https://music-backend-zz59.onrender.com";
 
-  // console.log(userId)
+
   const createPlaylist = () => {
     const title = playlistName.current.value;
     if (title)
@@ -29,7 +29,7 @@ export const CreateList = () => {
           isPrivate: false,
         })
         .then((res) => {
-          console.log(userId)
+   
           if (userId) {
             axios
               .put(`https://music-backend-zz59.onrender.com/user/` + userId, {
@@ -41,7 +41,6 @@ export const CreateList = () => {
                   .then((res) => {
                     playlistName.current.value = ""
                     setCreate(false);
-                    console.log(res.data);
                     setPlaylists(res.data.playlists)
                   })
                   .catch((error) => {

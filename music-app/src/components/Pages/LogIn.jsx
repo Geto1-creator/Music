@@ -36,7 +36,6 @@ export const LogIn = () => {
         password: passwordI,
       })
       .then((res) => {
-        console.log(res.data);
 
         signInWithEmailAndPassword(auth, emailI, passwordI)
           .then((userCredential) => {
@@ -47,7 +46,6 @@ export const LogIn = () => {
                 `https://music-backend-zz59.onrender.com/user/` + res.data._id
               )
               .then((res) => {
-                console.log(res.data);
                 setU(res.data);
                 window.localStorage.setItem(
                   "APP_USER",
@@ -70,7 +68,6 @@ export const LogIn = () => {
 
   return (
     <div className={styles.Container}>
-      {/* {error && toast.error(error)} */}
       <ToastContainer /> {/* <Container> */}{" "}
       <Link to="/">
         <div className={styles.logoCont}>

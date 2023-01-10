@@ -15,7 +15,7 @@ export const Profile = () => {
   const navigate = useNavigate();
   let location = useLocation();
   useEffect(() => {
-    if (location.pathname == "/login" || location.pathname == "/search") {
+    if (location.pathname == "/login" || location.pathname == "/search" || location.pathname == "signup") {
       setDisplayProfile(false);
     } else {
       setDisplayProfile(true);
@@ -28,15 +28,14 @@ export const Profile = () => {
         setUserId(null);
         localStorage.clear();
         setPlaylists(null);
-        console.log("sign out");
+      
       })
       .catch((error) => {
-        // An error happened.
         console.log(error);
       });
   };
 
-  // console.log(displayProfile);
+
   return (
     <Dropdown style={{ borderRadius: "30px" }}>
       <div

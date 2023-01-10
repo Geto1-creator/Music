@@ -62,10 +62,10 @@ export const Search = () => {
           </InputGroup>
           <div className={styles.artistCont}>
             {artists.map((artist, index) => {
-              if (index == 0 && artist != null) {
+              if (index == 0 && artist) {
                 return (
                   <Artist
-                    img={artist.images[0].url}
+                    img={  artist.images[0].url}
                     name={artist.name}
                     followers={artist.followers.total}
                     genres={artist.genres[0]}

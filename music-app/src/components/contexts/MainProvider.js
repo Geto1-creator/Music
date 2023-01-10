@@ -78,11 +78,10 @@ export const MainProvider = ({ children }) => {
       .then((result) => result.json())
       .then((data) => {
         setAccessToken(data.access_token);
-        // console.log(data.access_token);
       });
 
+
     const data = window.localStorage.getItem("APP_USER");
-    console.log(data);
     const parsedData = JSON.parse(data)
 
     if (data !== null) {
@@ -90,7 +89,6 @@ export const MainProvider = ({ children }) => {
       axios
         .get("https://music-backend-zz59.onrender.com/user/" + parsedData)
         .then((res) => {
-          console.log(res.data);
           setPlaylists(res.data.playlists);
         })
         .catch((err) => {
@@ -98,9 +96,9 @@ export const MainProvider = ({ children }) => {
         });
     }
   }, []);
+
   useEffect(() => {
     const data = window.localStorage.getItem("APP_USER");
-    console.log(data);
     const parsedData = JSON.parse(data)
 
     if (data !== null) {
@@ -108,7 +106,6 @@ export const MainProvider = ({ children }) => {
       axios
         .get("https://music-backend-zz59.onrender.com/user/" + parsedData)
         .then((res) => {
-          console.log(res.data);
           setPlaylists(res.data.playlists);
         })
         .catch((err) => {
@@ -116,27 +113,9 @@ export const MainProvider = ({ children }) => {
         });
     }
   }, [u])
-  console.log(userId)
-  // useEffect(() => {
-
-  //   console.log(userInfo)
-  //   if (userInfo) {
-  //     if (userInfo._id)
-  //       axios
-  //         .get("https://music-backend-zz59.onrender.com/user/" + userInfo._id)
-  //         .then((res) => {
-  //           console.log(res.data);
-  //           setPlaylists(res.data.playlists);
-  //         })
-  //         .catch((err) => {
-  //           console.log(err);
-  //         });
-  //   }
-
-  // }, [userInfo]);
 
 
-  // console.log(userInfo)
+
   //Search
   async function search() {
     console.log("Search For " + searchInput);
@@ -176,7 +155,6 @@ export const MainProvider = ({ children }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setAlbums(data.items);
       });
   }

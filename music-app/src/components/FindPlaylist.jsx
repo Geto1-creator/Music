@@ -18,7 +18,6 @@ export const FindPlaylist = (props) => {
 
   const { id } = useParams("");
 
-  console.log(props.songId);
 
   const addToPlaylist = (playlistId) => {
     axios
@@ -29,7 +28,6 @@ export const FindPlaylist = (props) => {
       })
       .then((res) => {
         // setCreate(false);
-        console.log(res.data);
         axios
           .put(baseUrl + "/playlist/" + playlistId, {
             id: res.data._id,
@@ -37,7 +35,6 @@ export const FindPlaylist = (props) => {
           .then((res) => {
             // window.location.reload(false);
             props.setSongId(null);
-            console.log(res.data);
           })
           .catch((error) => {
             console.log(error);

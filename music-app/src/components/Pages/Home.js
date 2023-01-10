@@ -52,8 +52,6 @@ export const Home = () => {
   //   getPlaylistData();
   // }, [accessToken]);
 
-  console.log(playlists);
-  console.log(currentUser)
 
 
   return (
@@ -113,7 +111,7 @@ export const Home = () => {
                   <Link
                     to={`/playlist/${playlist._id}`}
                     onClick={() => {
-                      console.log(playlist.title);
+                  
                       setPlaylistSong(true)
                     }}
                   >

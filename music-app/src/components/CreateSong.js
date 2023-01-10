@@ -28,7 +28,6 @@ export const CreateSong = () => {
         })
         .then((res) => {
 
-          console.log(res.data);
           axios
             .put(baseUrl + "/playlist/" + id, {
               id: res.data._id,
@@ -39,7 +38,6 @@ export const CreateSong = () => {
               axios
                 .get(baseUrl + '/playlist/' + id)
                 .then((res) => {
-                  console.log(res.data);
                   setSongs(res.data.songs)
                 })
                 .catch((error) => {

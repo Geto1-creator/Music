@@ -84,7 +84,7 @@ export const Songs = (props) => {
     setDur((ct / duration) * 100);
     setLength(duration);
   };
-  console.log(song_data);
+
   const ms = 54000000;
 
   function padTo2Digits(num) {
@@ -99,7 +99,6 @@ export const Songs = (props) => {
     return `${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`;
   }
 
-  console.log(dur);
   return (
     <div className={styles.Container}>
       <div className={`${styles.topCont} ${styles.bgColor1}`}>
@@ -135,7 +134,7 @@ export const Songs = (props) => {
                   setSong_data(song);
                   setSelectedSong(song.preview_url);
                   setIsPlaying(true);
-                  console.log("haha");
+               
                   // audioElem.current.play()
                 }}
               >

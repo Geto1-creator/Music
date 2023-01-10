@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { AiFillDelete, AiOutlineArrowLeft, AiOutlineHeart } from "react-icons/ai";
+import {
+  AiFillDelete,
+  AiOutlineArrowLeft,
+  AiOutlineHeart,
+} from "react-icons/ai";
 import styles from "../assets/songs.module.css";
 import { Player } from "../Player";
 import { MainContext } from "../contexts/MainProvider";
@@ -13,11 +17,20 @@ import { BiArrowBack } from "react-icons/bi";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
 export const SongsPlaylist = (props) => {
-  const { accessToken, songs, setSongs, playlistName, setSongCreate, songCreate, setPlaylistName, playlists, setPlaylists } =
-    useContext(MainContext);
+  const {
+    accessToken,
+    songs,
+    setSongs,
+    playlistName,
+    setSongCreate,
+    songCreate,
+    setPlaylistName,
+    playlists,
+    setPlaylists,
+  } = useContext(MainContext);
   const { currentUser, userId } = useAuth();
 
-  const [playlistData, setPlaylistData] = useState(null)
+  const [playlistData, setPlaylistData] = useState(null);
   const [selectedSong, setSelectedSong] = useState(null);
   const [dur, setDur] = useState();
   const [p, setP] = useState(false);
@@ -33,8 +46,6 @@ export const SongsPlaylist = (props) => {
     axios
       .get(`https://music-backend-zz59.onrender.com/playlist/${id}`, {})
       .then((res) => {
-        console.log(res.data);
-
         setPlaylistData(res.data);
         setSongs(res.data.songs);
       })
@@ -43,23 +54,20 @@ export const SongsPlaylist = (props) => {
       });
   }, []);
 
-  // console.log(id);
+
   const Delete = () => {
     axios
-      .delete(`https://music-backend-zz59.onrender.com/playlist/${id}`,)
+      .delete(`https://music-backend-zz59.onrender.com/playlist/${id}`)
       .then((res) => {
-        console.log("deleted");
         axios
           .get(`https://music-backend-zz59.onrender.com/user/` + userId)
           .then((res) => {
-            console.log(res.data);
-            setPlaylists(res.data.playlists)
-            Navigate('/')
+            setPlaylists(res.data.playlists);
+            Navigate("/");
           })
           .catch((error) => {
-            console.log(error)
+            console.log(error);
           });
-
       })
       .catch((error) => {
         console.log(error);
@@ -69,23 +77,19 @@ export const SongsPlaylist = (props) => {
     axios
       .delete(`https://music-backend-zz59.onrender.com/song/${songId}`)
       .then((res) => {
-        console.log("deleted");
         axios
-          .get('https://music-backend-zz59.onrender.com/playlist/' + id)
+          .get("https://music-backend-zz59.onrender.com/playlist/" + id)
           .then((res) => {
-            console.log(res.data);
-            setSongs(res.data.songs)
+            setSongs(res.data.songs);
           })
           .catch((error) => {
-            console.log(error)
+            console.log(error);
           });
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
-
 
   // const AddToFavourite = () => {
   //   axios
@@ -117,7 +121,9 @@ export const SongsPlaylist = (props) => {
             ></img>
             <div className={styles.infoCont}>
               <span className={styles.playlistTexts}>Playlist</span>
-              <span className={styles.playlistTitle}>{playlistData && playlistData.title}</span>
+              <span className={styles.playlistTitle}>
+                {playlistData && playlistData.title}
+              </span>
               <span className={styles.playlistTexts}>Description</span>
               <div>
                 <span className={styles.playlistTexts}>
@@ -137,13 +143,9 @@ export const SongsPlaylist = (props) => {
               <Dropdown.Item onClick={() => setSongCreate(true)}>
                 Add Songs
               </Dropdown.Item>
-              <Dropdown.Item onClick={Delete} >
-                Delete
-              </Dropdown.Item>
-
+              <Dropdown.Item onClick={Delete}>Delete</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-
         </div>
 
         {/* <AiFillDelete onClick={Delete} className={styles.delete} /> */}
@@ -161,7 +163,6 @@ export const SongsPlaylist = (props) => {
           <hr className={styles.line}></hr>
           {songs &&
             songs.map((song, index) => {
-
               return (
                 <div
                   key={song + index}

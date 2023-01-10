@@ -16,14 +16,12 @@ export const ProfilePage = () => {
     axios
       .get("https://music-backend-zz59.onrender.com/user/" + userId)
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   });
-  console.log(userInfo);
   return (
     <div className={styles.Container}>
       <div className={styles.topCont}>
