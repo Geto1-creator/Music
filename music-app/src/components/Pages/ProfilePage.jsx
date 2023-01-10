@@ -1,13 +1,28 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { useNavigate } from "react-router";
 import styles from "../assets/profilepage.module.css";
+import { useAuth } from "../contexts/AuthContext";
 import { MainContext } from "../contexts/MainProvider";
 
 export const ProfilePage = () => {
   const { userInfo, playlists } = useContext(MainContext);
+  const { userId } = useAuth();
   const navigate = useNavigate();
-
+  const [data, setData] = useState();
+  useEffect(() => {
+    axios
+      .get("https://music-backend-zz59.onrender.com/user/" + userId)
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   console.log(userInfo);
   return (
     <div className={styles.Container}>
@@ -25,12 +40,12 @@ export const ProfilePage = () => {
           />
           <div className={styles.infoCont}>
             <span className={styles.topText}>Profile</span>
-            <span className={styles.proName}>{userInfo && userInfo.email}</span>
+            <span className={styles.proName}>{data && data.email}</span>
             <span className={`${styles.topText} ${styles.marginTop}`}>
               {playlists && playlists.length} Public Playlists
             </span>
             <span className={styles.topText}>
-              Founded: {userInfo && userInfo.createdAt}
+              Founded: {data && data.createdAt}
             </span>
           </div>
         </div>

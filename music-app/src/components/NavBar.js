@@ -19,7 +19,6 @@ export const NavBar = () => {
     playlists,
     setPlaylistSong,
     setPlaylistName,
-    userInfo,
   } = useContext(MainContext);
 
   let location = useLocation();

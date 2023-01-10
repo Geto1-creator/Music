@@ -7,22 +7,18 @@ import { ImCross } from "react-icons/im";
 import { MainContext } from "./contexts/MainProvider";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { IoAdd } from "react-icons/io5";
 
 export const FindPlaylist = (props) => {
-  const { userInfo, setPlaylists } = useContext(MainContext);
+  const { userInfo, setPlaylists, playlists } = useContext(MainContext);
   const [pName, setPName] = useState();
   const [putId, setPutId] = useState();
   const [list, setList] = useState();
   const baseUrl = "https://music-backend-zz59.onrender.com";
 
   const { id } = useParams("");
-  console.log(putId);
-  console.log(props.songId);
 
-  useEffect(() => {
-    console.log(userInfo);
-    setList(userInfo.playlists);
-  }, [userInfo]);
+  console.log(props.songId);
 
   const addToPlaylist = (playlistId) => {
     axios
@@ -40,6 +36,7 @@ export const FindPlaylist = (props) => {
           })
           .then((res) => {
             // window.location.reload(false);
+            props.setSongId(null);
             console.log(res.data);
           })
           .catch((error) => {
@@ -72,16 +69,19 @@ export const FindPlaylist = (props) => {
       />
       <div className={styles.midSector}>
         <div className={styles.innerCont}>
-          {list &&
-            list.map((playlist, index) => {
-
+          {playlists &&
+            playlists.map((playlist, index) => {
               return (
-                <div style={{ display: "flex", gap: "5px" }}>
-                  <span style={{ opacity: "50%" }}>{index + 1}.</span>
-                  <span onClick={() => addToPlaylist(playlist._id)}>
-                    {" "}
-                    {playlist.title}
-                  </span>
+                <div className={styles.div}>
+                  <div>
+                    <span style={{ opacity: "50%" }}>{index + 1}.</span>
+                    <span> {playlist.title}</span>
+                  </div>
+
+                  <IoAdd
+                    className={styles.addIcon}
+                    onClick={() => addToPlaylist(playlist._id)}
+                  />
                 </div>
               );
             })}

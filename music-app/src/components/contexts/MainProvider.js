@@ -21,7 +21,7 @@ export const MainProvider = ({ children }) => {
   const [songs, setSongs] = useState([]);
   const [playlistName, setPlaylistName] = useState();
   const [playlistSong, setPlaylistSong] = useState(false);
-  const [userInfo, setUserInfo] = useState([]);
+  const [u, setU] = useState([])
   const [displayProfile, setDisplayProfile] = useState(true);
   const CLIENT_ID = "7989d19bf0fa41c88e1a1acfd7e93c09";
   const CLIENT_SECRET = "78ef5245c2ac4fbfb059f2a375b199a5";
@@ -51,13 +51,12 @@ export const MainProvider = ({ children }) => {
     playlistSong,
     displayProfile,
     setDisplayProfile,
-    userInfo,
-    setUserInfo,
     songCreate, setSongCreate,
     putCreate,
     setPutCreate,
     songs,
-    setSongs
+    setSongs,
+    u, setU
 
   };
 
@@ -82,35 +81,59 @@ export const MainProvider = ({ children }) => {
         // console.log(data.access_token);
       });
 
-    // const data = window.localStorage.getItem("APP_USER");
-    // console.log(data);
-    // const parsedData = JSON.parse(data)
-    // if (data !== null) setUserId(parsedData);
+    const data = window.localStorage.getItem("APP_USER");
+    console.log(data);
+    const parsedData = JSON.parse(data)
 
-    const user = window.localStorage.getItem("APP_USER");
-    const parsedUser = JSON.parse(user)
-    // console.log(userInfoData)
-    if (user !== null) setUserInfo(parsedUser);
-  }, []);
-
-
-  useEffect(() => {
-    console.log(userInfo)
-    if (userInfo) {
-      if (userInfo._id)
-        axios
-          .get("https://music-backend-zz59.onrender.com/user/" + userInfo._id)
-          .then((res) => {
-            console.log(res.data);
-            setPlaylists(res.data.playlists);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+    if (data !== null) {
+      setUserId(parsedData);
+      axios
+        .get("https://music-backend-zz59.onrender.com/user/" + parsedData)
+        .then((res) => {
+          console.log(res.data);
+          setPlaylists(res.data.playlists);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
+  }, []);
+  useEffect(() => {
+    const data = window.localStorage.getItem("APP_USER");
+    console.log(data);
+    const parsedData = JSON.parse(data)
 
-  }, [userInfo]);
+    if (data !== null) {
+      setUserId(parsedData);
+      axios
+        .get("https://music-backend-zz59.onrender.com/user/" + parsedData)
+        .then((res) => {
+          console.log(res.data);
+          setPlaylists(res.data.playlists);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [u])
+  console.log(userId)
+  // useEffect(() => {
 
+  //   console.log(userInfo)
+  //   if (userInfo) {
+  //     if (userInfo._id)
+  //       axios
+  //         .get("https://music-backend-zz59.onrender.com/user/" + userInfo._id)
+  //         .then((res) => {
+  //           console.log(res.data);
+  //           setPlaylists(res.data.playlists);
+  //         })
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //   }
+
+  // }, [userInfo]);
 
 
   // console.log(userInfo)

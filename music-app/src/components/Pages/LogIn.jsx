@@ -15,12 +15,15 @@ import { useAuth } from "../contexts/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RecaptchaVerifier } from "firebase/auth";
+import { useContext } from "react";
+import { MainContext } from "../contexts/MainProvider";
 
 export const LogIn = () => {
   const [emailI, setEmailI] = useState("");
   const [passwordI, setPasswordI] = useState("");
   const navigate = useNavigate();
   const { currentUser, setIsLogIn, userId, setUserId } = useAuth();
+  const { u, setU } = useContext(MainContext);
   const [error, setError] = useState("");
 
   const onSubmit = (e) => {
@@ -28,7 +31,7 @@ export const LogIn = () => {
     const auth = getAuth();
 
     axios
-      .post(`https://music-backend-zz59.onrender.com/users`, {
+      .post(`https://music-backend-zz59.onrender.com/login`, {
         email: emailI,
         password: passwordI,
       })
@@ -39,20 +42,25 @@ export const LogIn = () => {
           .then((userCredential) => {
             const user = userCredential.user;
             navigate("/");
+            axios
+              .get(
+                `https://music-backend-zz59.onrender.com/user/` + res.data._id
+              )
+              .then((res) => {
+                console.log(res.data);
+                setU(res.data);
+                window.localStorage.setItem(
+                  "APP_USER",
+                  JSON.stringify(res.data._id)
+                );
+              })
+              .catch((error) => {
+                console.log(error);
+              });
           })
           .catch((error) => {
             const errorCode = error.code;
             setError(error.message);
-          });
-
-        axios
-          .get(`https://music-backend-zz59.onrender.com/user/` + res.data._id)
-          .then((res) => {
-            console.log(res.data);
-            window.localStorage.setItem("APP_USER", JSON.stringify(res.data));
-          })
-          .catch((error) => {
-            console.log(error);
           });
       })
       .catch((error) => {
@@ -60,7 +68,6 @@ export const LogIn = () => {
       });
   };
 
-  console.log(userId);
   return (
     <div className={styles.Container}>
       {/* {error && toast.error(error)} */}

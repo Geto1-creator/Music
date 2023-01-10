@@ -8,14 +8,9 @@ import { MainContext } from "./contexts/MainProvider";
 import { useEffect } from "react";
 
 export const Profile = () => {
-  const { currentUser } = useAuth();
-  const {
-    setDisplayProfile,
-    displayProfile,
-    setPlaylists,
-    setUserInfo,
-    userInfo,
-  } = useContext(MainContext);
+  const { currentUser, userId, setUserId } = useAuth();
+  const { setDisplayProfile, displayProfile, setPlaylists } =
+    useContext(MainContext);
   const auth = getAuth();
   const navigate = useNavigate();
   let location = useLocation();
@@ -30,8 +25,9 @@ export const Profile = () => {
   const SignOut = () => {
     signOut(auth)
       .then(() => {
-        setUserInfo(null);
+        setUserId(null);
         localStorage.clear();
+        setPlaylists(null);
         console.log("sign out");
       })
       .catch((error) => {
@@ -61,7 +57,7 @@ export const Profile = () => {
         <Dropdown.Menu>
           <Dropdown.Item
             onClick={() => {
-              if (userInfo) navigate(`/profile/${userInfo._id}`);
+              if (userId) navigate(`/profile/${userId}`);
             }}>
             Profile
           </Dropdown.Item>

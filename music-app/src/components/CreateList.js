@@ -8,9 +8,9 @@ import { useAuth } from "./contexts/AuthContext";
 import { ImCross } from "react-icons/im";
 
 export const CreateList = () => {
-  const { create, setCreate, playlists, setPlaylists, userInfo } =
+  const { create, setCreate, playlists, setPlaylists } =
     useContext(MainContext);
-
+  const { userId } = useAuth()
   let playlistName = useRef();
   const [pName, setPName] = useState();
   const [des, setDes] = useState("");
@@ -29,28 +29,28 @@ export const CreateList = () => {
           isPrivate: false,
         })
         .then((res) => {
-          if (userInfo) {
-            if (userInfo._id)
-              axios
-                .put(`https://music-backend-zz59.onrender.com/user/` + userInfo._id, {
-                  id: res.data._id
-                })
-                .then((res) => {
-                  axios
-                    .get(`https://music-backend-zz59.onrender.com/user/` + userInfo._id)
-                    .then((res) => {
-                      playlistName.current.value = ""
-                      setCreate(false);
-                      console.log(res.data);
-                      setPlaylists(res.data.playlists)
-                    })
-                    .catch((error) => {
-                      console.log(error)
-                    });
-                })
-                .catch((error) => {
-                  console.log(error)
-                });
+          console.log(userId)
+          if (userId) {
+            axios
+              .put(`https://music-backend-zz59.onrender.com/user/` + userId, {
+                id: res.data._id
+              })
+              .then((res) => {
+                axios
+                  .get(`https://music-backend-zz59.onrender.com/user/` + userId)
+                  .then((res) => {
+                    playlistName.current.value = ""
+                    setCreate(false);
+                    console.log(res.data);
+                    setPlaylists(res.data.playlists)
+                  })
+                  .catch((error) => {
+                    console.log(error)
+                  });
+              })
+              .catch((error) => {
+                console.log(error)
+              });
           }
 
 

@@ -13,9 +13,9 @@ import { BiArrowBack } from "react-icons/bi";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
 export const SongsPlaylist = (props) => {
-  const { accessToken, songs, setSongs, playlistName, setSongCreate, songCreate, setPlaylistName, userInfo, playlists, setPlaylists } =
+  const { accessToken, songs, setSongs, playlistName, setSongCreate, songCreate, setPlaylistName, playlists, setPlaylists } =
     useContext(MainContext);
-  const { currentUser } = useAuth();
+  const { currentUser, userId } = useAuth();
 
   const [playlistData, setPlaylistData] = useState(null)
   const [selectedSong, setSelectedSong] = useState(null);
@@ -50,7 +50,7 @@ export const SongsPlaylist = (props) => {
       .then((res) => {
         console.log("deleted");
         axios
-          .get(`https://music-backend-zz59.onrender.com/user/` + userInfo._id)
+          .get(`https://music-backend-zz59.onrender.com/user/` + userId)
           .then((res) => {
             console.log(res.data);
             setPlaylists(res.data.playlists)
